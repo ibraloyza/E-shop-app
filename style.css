@@ -181,5 +181,44 @@
     .add-to-cart-btn:hover{
         background-color: var(--primary-dark);
     }
+    /* model*/
+    .model{
+        display: none;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
 
+    }
+    .model.active{
+        display: flex;
+        opacity: 1;
+        pointer-events: auto;
+
+    }
+    .modal-container {
+        background: var(--bg-white);
+        padding: 2rem;
+        border-radius: 0.5rem;
+        width: 100%;
+        max-width: 500px;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: relative;
+      }
+      .close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+      }
+      
   

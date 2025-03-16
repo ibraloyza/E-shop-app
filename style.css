@@ -80,4 +80,42 @@
     border-radius: 999px;    
   }
 
+    /* auth section */
+    .auth-section{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .user-email{
+        color: var(--text-secondary)7;
+        font-size: 0.875rem;
+      }
+      .sign-in-btn{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .sign-in-btn:hover{
+        background-color: var(--primary-dark);
+      }
+      .sign-out-btn{
+        padding: 0.5rem 1rem;
+        background-color: #ef4444;
+        color: white;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .sign-out-btn:hover{
+        background-color: #ef4444;
+      }
+
   

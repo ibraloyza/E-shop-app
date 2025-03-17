@@ -36,4 +36,14 @@ function randerProducts(products) {
 
   productGrid.innerHTML = newProducts;
 
+  productGrid.querySelectorAll(".add-to-cart-btn").forEach((button)=>{
+    button.addEventListener("click",()=>{
+        const { id } = button.dataset;
+        let product = currentProducts.find((products)=>product.id == id);
+        addToCart(product)
+    })
+  })
+
 }
+
+

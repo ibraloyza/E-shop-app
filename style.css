@@ -131,7 +131,7 @@
         gap: 2rem;
     }
     .product-card{
-        background-color: var(--bg-width);
+        background-color: var(--bg-white);
         border-radius: 0.5rem;
         padding: 1rem;
         box-shadow: var(--shadow-md);

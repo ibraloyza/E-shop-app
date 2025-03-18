@@ -67,4 +67,63 @@ function renderCategories(categories){
       );
 }
 
+let cartBtn = document.querySelector("#cartBtn")
+let cartModel  = document.querySelector("#cartModel")
+let cartItems = document.querySelector("#cartItems");
+let closeCartModel = document.querySelector("#closeCartModel")
+
+
+cartBtn.addEventListener("click", ()=>{
+    cartModel.classList.add("active");
+    randerCart();
+});
+
+closeCartModel.addEventListener("click", ()=>{
+    cartModel.classList.remove("active");
+});
+
+function randerCart(){
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    cartItems.innerHTML = cart
+    .map((item) =>
+    `
+    <div class="cart-item">
+        <img src="${item.image}" alt="${item.title}">
+        <div class="cart-item-details">
+            <h4>${item.title}</h4>
+            <p>${item.price.toFixed(2)}× ${item.quantity}</p>
+        </div>
+        <div class="cart-item-actions">
+            <button class="quantity-btn" data-id="${item.id}" data-action="decrease">-</button>
+            <span>${item.quantity}</span
+            <button class="quantity-btn" data-id="${item.id}" data-action="increase">+</button>
+        </div>
+    </div>
+    
+    `
+    )
+    .join("");
+
+    cartItems.querySelector(".quantity-btn").forEach((quantityBtn) =>{
+        quantityBtn.addEventListener("click", () =>{
+            const { id, action } = quantityBtn.dataset;
+
+            let cartItem = cart.find((cart) => cart.id = id);
+
+            if(action == increase){
+                cartItem.quantity +=1;
+                localStorage.setItem("cart", JSON.stringify(cart));
+            }
+            else if(action == decrease){
+                cartItem.quantity -=1;
+                if(cartItem.quantity == 0){
+                    cart = cart.filter((cart) => cart.id !=id);
+                }
+                localStorage.setItem("cart", JSON.stringify(cart));
+            }
+            countItemInTheCart();
+            randerCart();
+        });
+    });
+}
 

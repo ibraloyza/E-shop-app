@@ -127,3 +127,19 @@ function randerCart(){
     });
 }
 
+function addToCart(item){
+    let carts = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existItem = carts.find((cart) => cart.id == item.id);
+
+    if (existItem) {
+        existItem.quantity +=1;;
+    }
+    else{
+        carts.push({...item, quantity:1});
+    }
+    localStorage.setItem("cart", JSON.stringify(carts));
+    countItemInTheCart();
+}
+
+

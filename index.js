@@ -1,5 +1,6 @@
 const product_URL = "https://fakestoreapi.com";
 fetchProducts();
+fetchCategories();
 
 let productGrid = document.querySelector("#productGrid");
 let currentProducts = [];
@@ -44,6 +45,13 @@ function randerProducts(products) {
     })
   })
 
+}
+
+function fetchCategories(){
+    fetch(`${product_URL}/products/categories`)
+    .then((response) => (response.json()))
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error))
 }
 
 

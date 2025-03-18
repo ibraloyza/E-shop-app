@@ -47,11 +47,24 @@ function randerProducts(products) {
 
 }
 
+// let categoryFilter = document.querySelector("#categoryFilter");
+// let currentCategory = [];
+
 function fetchCategories(){
     fetch(`${product_URL}/products/categories`)
     .then((response) => (response.json()))
-    .then((data) => console.log(data))
+    .then((data) => renderCategories(data))
     .catch((error) => console.log(error))
+}
+
+
+function renderCategories(categories){
+    categoryFilter.innerHTML += categories.map(
+        (category) =>
+          `<option value="${category}">${
+            category[0].toUpperCase() + category.slice(1)
+          }</option>`
+      );
 }
 
 

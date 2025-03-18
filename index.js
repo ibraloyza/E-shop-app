@@ -1,6 +1,8 @@
 const product_URL = "https://fakestoreapi.com";
 fetchProducts();
 fetchCategories();
+calculateCartItems();
+
 
 let productGrid = document.querySelector("#productGrid");
 let currentProducts = [];
@@ -142,4 +144,17 @@ function addToCart(item){
     countItemInTheCart();
 }
 
+function countItemInTheCart(){
+    let cartCount = document.querySelector("#cartcount");
+    let cart = JSON.parse(localStorage.getItem("cart"))|| [];
+    cartCount.textContent = cart.length;
+    calculateCartItems();
+}
 
+function calculateCartItems(){
+    let cartTotle = document.querySelector("#cartTotle");
+    let cart = JSON.parse(localStorage.getItem("cart")) ||[];
+    let totle = cart.reduce((acc,item) =>acc+item.quantity*item.price, 0);
+
+    cartTotle.textContent = totle.toFixed(2);
+}
